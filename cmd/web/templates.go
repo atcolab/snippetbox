@@ -5,6 +5,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"atcolab/snippetbox/pkg/forms"
 	"atcolab/snippetbox/pkg/models"
 )
 
@@ -18,6 +19,7 @@ var functions = template.FuncMap{
 
 type templateData struct {
     CurrentYear int
+	Form		*forms.Form
     Snippet     *models.Snippet
     Snippets    []*models.Snippet
 }
