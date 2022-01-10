@@ -17,11 +17,12 @@ import (
 )
 
 type application struct {
-	errorLog		*log.Logger
-	infoLog			*log.Logger
-	session			*sessions.Session
-	snippets		*mysql.SnippetModel
-	templateCache	map[string]*template.Template
+    errorLog      *log.Logger
+    infoLog       *log.Logger
+    session       *sessions.Session
+    snippets      *mysql.SnippetModel
+    templateCache map[string]*template.Template
+    users         *mysql.UserModel
 }
 
 func main() {
@@ -50,12 +51,13 @@ func main() {
 	session.Secure = true
 
 	app := &application{
-		errorLog:		errorLog,
-		infoLog:		infoLog,
-		session: 		session,
-		snippets:		&mysql.SnippetModel{DB: db},
-		templateCache:	templateCache,
-	}
+        errorLog:      errorLog,
+        infoLog:       infoLog,
+        session:       session,
+        snippets:      &mysql.SnippetModel{DB: db},
+        templateCache: templateCache,
+        users:         &mysql.UserModel{DB: db},
+    }
 
 	tlsConfig := &tls.Config{
 		PreferServerCipherSuites: 	true,
